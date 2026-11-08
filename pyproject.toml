@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vlmdg"
+version = "0.1.0"
+description = "Growing the Grammar: Vision Language Models as Online Rule Generators for Grammar-Based Design Optimization."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Nirmal Prasad Panta", email = "nil.panta77@gmail.com" }]
+keywords = ["design grammar", "shape annealing", "truss optimization", "vision language model", "rule generation"]
+
+dependencies = [
+    "networkx>=3.2",
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+    "anthropic>=0.40",
+    "openai>=1.50",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pylint>=3.2", "black>=24.0"]
+
+[project.scripts]
+vlmdg = "vlmdg.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vlmdg = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
